@@ -5,6 +5,7 @@
 	export let form: ActionData;
 
 	$: console.log('Form received b', form);
+	$: console.log('Form from page', $page.form);
 </script>
 
 <form method="POST" use:enhance action="/a">
