@@ -7,20 +7,17 @@ export const load = (async () => {
 
 export const actions = {
     default: async ({ request }) => {
-        const formData = Object.fromEntries(await request.formData())
 
-        const success = true;// Math.random() > 0.3;
+        const success = true;
         const errors = {};
-        Object.keys(formData).forEach(key => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            //@ts-ignore
-            errors[key] = true; // Math.random() > 0.3;
-        })
 
-        console.log('Logging to vite window', formData, formData.test, errors, success)
+        const data = await request.formData();
 
+        const test = data.get('test');
 
-        return { success, errors, formData }
+        console.log('Getting stuff', test, data);
+
+        return { success, errors, test }
     }
 
 } satisfies Actions

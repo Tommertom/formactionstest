@@ -2,16 +2,16 @@
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import type { ActionData } from '../a/$types';
-
+	import type { PageData } from './$types';
+	export let data: PageData;
 	export let form: ActionData;
 
-	$: console.log('Form received b', form);
-	$: console.log('Form from page', $page.form);
+	$: console.log('Form received', form, form?.test, data);
+	$: console.log('Form from page', $page.form, data);
 </script>
 
 <form method="POST" use:enhance action="/a">
-	<input name="test2" value={form?.formData.test2} />
-
+	<input name="test" value={$page.form?.test ?? ''} />
 	<button type="submit">sub</button>
 </form>
 back
